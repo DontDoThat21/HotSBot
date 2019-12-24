@@ -30,7 +30,7 @@ namespace HotSBot
             using (TesseractEngine eng = new TesseractEngine("./tessdata", "eng", EngineMode.Default))
             {
                 using (Page page = eng.Process(img, PageSegMode.Auto))
-                { 
+                {
                     //mapWereOn = page.GetText().ToLower();
                     var Ocr = new AutoOcr();
                     var Result = Ocr.Read(@"C:\Temp\HotSBot\mapCapture.jpg");
@@ -38,7 +38,7 @@ namespace HotSBot
                     img.Dispose();
                 }
             }
-            
+
             if (mapWereOn.Contains("mura"))
             {
                 mapResult = "Hanamura";
@@ -109,7 +109,7 @@ namespace HotSBot
                 //    }
                 //}
 
-               // SearchForGame();
+                // SearchForGame();
 
             }
 
@@ -140,7 +140,7 @@ namespace HotSBot
             vm.MoveTo(1800, 63000); Thread.Sleep(100); // This handles Exit if need to exit/skip when game ends.
             vm.LeftClick();
             vm.MoveTo(6000, 62000); Thread.Sleep(100); // 60 to 51 is fine.
-            vm.LeftClick();            
+            vm.LeftClick();
         }
         //{
         //    //Thread.Sleep(3500);
@@ -157,7 +157,7 @@ namespace HotSBot
         //    screenSearchReady = MakeGrayscale(screenSearchReady);
         //    screenSearchReady = AdjustContrast(screenSearchReady, 100);
         //    screenSearchReady.Save(@"C:\Temp\HotSBot\screenSearchReady.jpg");
-            
+
         //    var Ocr = new AutoOcr();
         //    var Result = Ocr.Read(@"C:\Temp\HotSBot\screenSearchReady.jpg");
         //    string res = Result.Text;
@@ -305,33 +305,33 @@ namespace HotSBot
 
             List<int> yCoords = new List<int>()
             {
-                52000, 53000, 54000, 55000, 56000, 57000, 58000, 59000, 60000
+                52000, 54000, 56000, 58000, 60000 // List<int> yCoords = new List<int>() { 52000, 53000, 54000, 55000, 56000, 57000, 58000, 59000, 60000 } ;
             };
             VirtualMouse vm = new VirtualMouse();
 
             for (int i = 0; i < yCoords.Count; i++)
             {
-                vm.MoveTo(58150, yCoords.ElementAt(rand.Next(1, 9))); // 60 to 51 is fine.
+                vm.MoveTo(58150, yCoords.ElementAt(rand.Next(0, 4))); // 60 to 51 is fine.
                 int randomSleep;
                 randomSleep = rand.Next(700, 1300);
                 Thread.Sleep(randomSleep);
                 SendKeys.SendWait("+a");
             }
         }
-        
+
         public void Feed()
-         {
+        {
             Random rand = new Random();
 
             List<int> yCoords = new List<int>()
             {
-                52000, 53000, 54000, 55000, 56000, 57000, 58000, 59000, 60000
+                52000, 54000, 56000, 58000, 60000 // List<int> yCoords = new List<int>() { 52000, 53000, 54000, 55000, 56000, 57000, 58000, 59000, 60000 } ;
             };
             VirtualMouse vm = new VirtualMouse();
 
             for (int i = 0; i < yCoords.Count; i++)
             {
-                vm.MoveTo(58150, yCoords.ElementAt(rand.Next(1, 9))); // 60 to 51 is fine.
+                vm.MoveTo(58150, yCoords.ElementAt(rand.Next(0, 4))); // 60 to 51 is fine.
                 int randomSleep;
                 randomSleep = rand.Next(700, 1300);
                 Thread.Sleep(randomSleep);
@@ -340,7 +340,7 @@ namespace HotSBot
 
             for (int i = 0; i < yCoords.Count; i++)
             {
-                vm.MoveTo(54300, yCoords.ElementAt(rand.Next(1, 9))); // 60 to 51 is fine.
+                vm.MoveTo(54300, yCoords.ElementAt(rand.Next(0, 4))); // 60 to 51 is fine.
                 int randomSleep;
                 randomSleep = rand.Next(700, 1300);
                 Thread.Sleep(randomSleep);
@@ -349,7 +349,7 @@ namespace HotSBot
 
             for (int i = 0; i < yCoords.Count; i++)
             {
-                vm.MoveTo(62000, yCoords.ElementAt(rand.Next(1, 9))); // 60 to 51 is fine.
+                vm.MoveTo(62000, yCoords.ElementAt(rand.Next(0, 4))); // 60 to 51 is fine.
                 int randomSleep;
                 randomSleep = rand.Next(700, 1300);
                 Thread.Sleep(randomSleep);
@@ -359,6 +359,53 @@ namespace HotSBot
             vm.LeftClick();
 
 
+        }
+
+        public void RandomAbility()
+        {
+            char[] charArray =
+                {
+                'q', 'w', 'e', 'd', 'r'
+            };
+            int abilitiesToPress = 1;   
+            double decrementingPercentage = 1;
+            Random rand = new Random();
+            int percentageToStop = rand.Next(1, 100); // 0 to 100; 
+
+            for (int i = 0; i < 5; i++)
+            {
+                decrementingPercentage = decrementingPercentage * .75;
+                if ((decrementingPercentage * 100) >= percentageToStop)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            SendKeys.SendWait("q");
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+
+                        default:
+                            break;
+                    }
+                    SendKeys.SendWait("+a");
+                }
+                
+                
+            }
+
+
+            // Here, we're going to randomly decide how many abilties to try to spam. In a random direction of course.
+            for (int i = 0; i < 5; i++) // 5 max.. Q, W, E, R, D
+            {
+
+            }
         }
     }
 }

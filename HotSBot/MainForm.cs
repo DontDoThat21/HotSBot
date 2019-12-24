@@ -32,13 +32,20 @@ namespace HotSBot
         {
             timeToStop = SetTimeToEndBot();
 
-            //Begin();
+            Task startBotAsync = new Task(() =>
+            {
+                Begin();
+            }); startBotAsync.Start();
 
-            //Thread.Sleep(1000);
             //Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
             //                        Screen.PrimaryScreen.Bounds.Height);
-            //Graphics graphics = Graphics.FromImage(bitmap as Image);
-            //graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+            
+            //bitmap = new Bitmap(@"C:\Users\Tylor\Desktop\goodGreen.png");
+            //IronOcr.AutoOcr ocr = new IronOcr.AutoOcr();
+            //var x = ocr.Read(bitmap);
+            //string res = x.Text;
+
+            //bitmap.Save(@"C:\Users\Tylor\Desktop\testColor.png");
 
             //if (Directory.Exists(@"C:\Temp:HotsBot\"))
             //{
@@ -79,6 +86,7 @@ namespace HotSBot
 
         private void Begin()
         {
+
             var hotsExists = Process.GetProcessesByName("HeroesOfTheStorm_x64");
             if (hotsExists.Length == 0)
             {
@@ -89,47 +97,61 @@ namespace HotSBot
                     hotsLoc = hotsLoc.Replace("\"", "");
                     hotsLoc = hotsLoc.Substring(0, indexStop);
                     Process.Start(hotsLoc);
-                    rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
-                    rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
+                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
+                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
                 }
             }
 
             InGameDetection ig = new InGameDetection();
             Task obj;
 
+            ig.RandomAbility();
 
-            obj = new Task(ig.SelectRandomSelectHero);
-            obj.Start();
+            //obj = new Task(ig.SelectRandomSelectHero);
+            //obj.Start();
+            ig.SelectRandomSelectHero();
             Thread.Sleep(2000);
             
-            obj = new Task(ig.ReadyUp);
-            obj.Start();
+            //obj = new Task(ig.ReadyUp);
+            //obj.Start();
+            ig.ReadyUp();
             Thread.Sleep(2000);
 
-            obj = new Task(ig.GoMid);
-            obj.Start();
+            //obj = new Task(ig.GoMid);
+            //obj.Start();
+            ig.GoMid();
             Thread.Sleep(2000);
 
-            obj = new Task(ig.Feed);
-            obj.Start();
+            //obj = new Task(ig.Feed);
+            //obj.Start();
+            ig.Feed();
             Thread.Sleep(2000);
 
             //ig.Feed("FEED");
             //Thread.Sleep(2000);
 
-            obj = new Task(ig.SelectTalent);
-            obj.Start();
+            //obj = new Task(ig.SelectTalent);
+            //obj.Start();
+            ig.SelectTalent();
             Thread.Sleep(100);
 
-            obj = new Task(ig.DisconnectRejoiner);
-            obj.Start();
+            //obj = new Task(ig.DisconnectRejoiner);
+            //obj.Start();
+            ig.DisconnectRejoiner();
             Thread.Sleep(2000);
 
-            obj = new Task(ig.EndOfGameLeaveButtonClick);
-            obj.Start();
+            //obj = new Task(ig.EndOfGameLeaveButtonClick);
+            //obj.Start();
+            ig.EndOfGameLeaveButtonClick();
             Thread.Sleep(2000);
+            
+            //rtbConsole.AppendText($"\nCycle complete."); // How do I do this?
 
-            Begin();
+            Task redo = new Task(() =>
+            {
+                Begin();
+            }); redo.Start();
+
         }
 
         private void hotsBot_Load(object sender, EventArgs e)
