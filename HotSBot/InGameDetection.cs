@@ -393,6 +393,7 @@ namespace HotSBot
 
                         default:
                             break;
+                            //Test.
                     }
                     SendKeys.SendWait("+a");
                 }
