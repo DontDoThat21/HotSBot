@@ -19,6 +19,7 @@ namespace HotSBot
         public bool inAGame = false;
         public bool searchingForGame = false;
 
+        List<char> usedChars = new List<char>();
 
         public string GetCurrentMap(Bitmap bm)
         {
@@ -367,6 +368,7 @@ namespace HotSBot
                 {
                 'q', 'w', 'e', 'd', 'r'
             };
+
             int abilitiesToPress = 1;   
             double decrementingPercentage = 1;
             Random rand = new Random();
@@ -377,27 +379,9 @@ namespace HotSBot
                 decrementingPercentage = decrementingPercentage * .75;
                 if ((decrementingPercentage * 100) >= percentageToStop)
                 {
-                    switch (i)
-                    {
-                        case 0:
-                            SendKeys.SendWait("q");
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-
-                        default:
-                            break;
-                            //Test.
-                    }
-                    SendKeys.SendWait("+a");
-                }
-                
+                    char hkey = SelectHotkeyRandomly(charArray, usedChars);
+                    SendKeys.SendWait(hkey.ToString());
+                }                
                 
             }
 
@@ -407,6 +391,43 @@ namespace HotSBot
             {
 
             }
+        }
+
+        private char SelectHotkeyRandomly(char[] charArray, List<char> usedChars)
+        {
+            VirtualMouse vm = new VirtualMouse();
+            Random rand = new Random();
+            int range = rand.Next(0, charArray.Length - 1);
+            try
+            {
+                for (int i = 0; i < charArray.Length - 1; i++)
+                {
+                    char c = charArray[range];
+                    range = rand.Next(0, charArray.Length - 1);
+
+                    if (usedChars.Contains(c) == true)
+                    {                        
+                        SelectHotkeyRandomly(charArray, usedChars);
+                        // We need to restart since we just casted that...
+                    }
+                    else if (usedChars.Contains(c) == false)
+                    {
+                        usedChars.Add(c);
+                        SendKeys.SendWait("s");
+                        int xOffset = rand.Next(-4, 4);
+                        int yOffset = rand.Next(-4, 4);
+                        vm.MoveTo(33500 + (xOffset * 3000), 30000 + (yOffset * 3000));
+                        SendKeys.SendWait(c.ToString());
+                    }
+                    return c;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return '.';
         }
     }
 }

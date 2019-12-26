@@ -90,7 +90,15 @@ namespace HotSBot
             var hotsExists = Process.GetProcessesByName("HeroesOfTheStorm_x64");
             if (hotsExists.Length == 0)
             {
-                string hotsLoc = Registry.GetValue(@"HKEY_CLASSES_ROOT\Blizzard.StormReplay\DefaultIcon", "", "wtf?").ToString();
+                string hotsLoc = "";
+                try
+                {
+                    hotsLoc = Registry.GetValue(@"HKEY_CLASSES_ROOT\Blizzard.StormReplay\DefaultIcon", "", "wtf?").ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Can't find HotS.");
+                }
                 if (hotsLoc.Contains("HeroesSwitcher_x64")) 
                 {
                     int indexStop = hotsLoc.IndexOf(",") - 2;
