@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tesseract;
+using System.Deployment.Application;
 
 namespace HotSBot
 {
@@ -19,12 +20,12 @@ namespace HotSBot
         //public DateTime gameFoundTime = DateTime.Now;
         public DateTime timeToStop = new DateTime();
         private KeyHandler ghk;
+        string ver;
 
         public hotsBot()
         {
-            {
+            {    
                 InitializeComponent();
-
             }
         }
 
@@ -113,48 +114,29 @@ namespace HotSBot
             InGameDetection ig = new InGameDetection();
             Task obj;
 
-            ig.RandomAbility();
+            //ig.RandomAbility();
 
-            //obj = new Task(ig.SelectRandomSelectHero);
-            //obj.Start();
             ig.SelectRandomSelectHero();
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
             
-            //obj = new Task(ig.ReadyUp);
-            //obj.Start();
             ig.ReadyUp();
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
-            //obj = new Task(ig.GoMid);
-            //obj.Start();
             ig.GoMid();
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
-            //obj = new Task(ig.Feed);
-            //obj.Start();
             ig.Feed();
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
-            //ig.Feed("FEED");
-            //Thread.Sleep(2000);
-
-            //obj = new Task(ig.SelectTalent);
-            //obj.Start();
             ig.SelectTalent();
-            Thread.Sleep(100);
+            Thread.Sleep(500);
 
-            //obj = new Task(ig.DisconnectRejoiner);
-            //obj.Start();
             ig.DisconnectRejoiner();
-            Thread.Sleep(2000);
+            Thread.Sleep(500);
 
-            //obj = new Task(ig.EndOfGameLeaveButtonClick);
-            //obj.Start();
             ig.EndOfGameLeaveButtonClick();
             Thread.Sleep(2000);
             
-            //rtbConsole.AppendText($"\nCycle complete."); // How do I do this?
-
             Task redo = new Task(() =>
             {
                 Begin();

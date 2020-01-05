@@ -87,31 +87,6 @@ namespace HotSBot
             }
             else // Since all other searches failed, assume we're searching, then verify as such?
             {
-                //Thread.Sleep(3500);
-                //Bitmap screenSearchRegion = new Bitmap((int)(Screen.PrimaryScreen.Bounds.Width/10),
-                //                    (int)(Screen.PrimaryScreen.Bounds.Height * .2));
-                //Graphics graphics = Graphics.FromImage(screenSearchRegion as Image);
-                //graphics.CopyFromScreen((int)(Screen.PrimaryScreen.Bounds.Width*.90),
-                //    Screen.PrimaryScreen.Bounds.Height - (int)(Screen.PrimaryScreen.Bounds.Height * .20), 
-                //    0, 
-                //    0, 
-                //    screenSearchRegion.Size);
-
-                //screenSearchRegion = MakeGrayscale(screenSearchRegion);
-                //screenSearchRegion = AdjustContrast(screenSearchRegion, 100);
-                //screenSearchRegion.Save(@"C:\Temp\HotSBot\screenSearchTime.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-
-                //using (TesseractEngine engScreen = new TesseractEngine("./tessdata", "eng", EngineMode.Default))
-                //{
-                //    using (Page pageScreenSearch = engScreen.Process(screenSearchRegion, PageSegMode.Auto))
-                //    {
-                //        mapWereOn = pageScreenSearch.GetText().ToLower();
-                //        screenSearchRegion.Dispose();
-                //    }
-                //}
-
-                // SearchForGame();
-
             }
 
             return mapResult;
@@ -143,53 +118,6 @@ namespace HotSBot
             vm.MoveTo(6000, 62000); Thread.Sleep(100); // 60 to 51 is fine.
             vm.LeftClick();
         }
-        //{
-        //    //Thread.Sleep(3500);
-        //    Bitmap screenSearchReady = new Bitmap((int)(Screen.PrimaryScreen.Bounds.Width * .2),
-        //                            (int)(Screen.PrimaryScreen.Bounds.Height * .2));
-
-        //    Graphics graphics = Graphics.FromImage(screenSearchReady as Image);
-        //    graphics.CopyFromScreen((int)(Screen.PrimaryScreen.Bounds.Width * .40),
-        //        Screen.PrimaryScreen.Bounds.Height - (int)(Screen.PrimaryScreen.Bounds.Height * .20),
-        //        0,
-        //        0,
-        //        screenSearchReady.Size);
-
-        //    screenSearchReady = MakeGrayscale(screenSearchReady);
-        //    screenSearchReady = AdjustContrast(screenSearchReady, 100);
-        //    screenSearchReady.Save(@"C:\Temp\HotSBot\screenSearchReady.jpg");
-
-        //    var Ocr = new AutoOcr();
-        //    var Result = Ocr.Read(@"C:\Temp\HotSBot\screenSearchReady.jpg");
-        //    string res = Result.Text;
-
-        //    if (inAGame == false)
-        //    {
-        //        using (TesseractEngine eng = new TesseractEngine("./tessdata", "eng", EngineMode.Default))
-        //        {
-        //            using (Page page = eng.Process(screenSearchReady, PageSegMode.Auto))
-        //            {
-        //                res += page.GetText().ToLower();
-        //                if (res.Contains("cancel") | res.Contains("match") | res.Contains("searching") | res.Contains("estimated") | res.Contains("wait") 
-        //                    | res.Contains("elapsed") | res.Contains("time") | res.Contains("searching") | res.Contains("search") | res.Contains("quick"))
-        //                {
-        //                    inAGame = false;
-        //                    searchingForGame = true;
-        //                    SearchForGame();
-        //                }
-        //                else
-        //                {
-
-        //                }
-        //                screenSearchReady.Dispose();
-        //            }
-        //        }
-        //    }
-        //    else // Maybe we should gather in game data here? What hero are we?
-        //    {
-
-        //    }
-        //}
 
         public static Bitmap MakeGrayscale(Bitmap original)
         {
@@ -289,6 +217,8 @@ namespace HotSBot
             vm.MoveTo(28200, 60000);
             Thread.Sleep(500);
             vm.LeftClick();
+            SendKeys.SendWait("l");
+            SendKeys.SendWait("l");
         }
 
         public void DisconnectRejoiner()
@@ -298,6 +228,8 @@ namespace HotSBot
             vm.MoveTo(30000, 40000);
             Thread.Sleep(500);
             vm.LeftClick();
+            SendKeys.SendWait("l");
+            SendKeys.SendWait("l");
         }
 
         public void GoMid()
@@ -373,6 +305,7 @@ namespace HotSBot
             double decrementingPercentage = 1;
             Random rand = new Random();
             int percentageToStop = rand.Next(1, 100); // 0 to 100; 
+            percentageToStop = 0;
 
             for (int i = 0; i < 5; i++)
             {
@@ -385,12 +318,6 @@ namespace HotSBot
                 
             }
 
-
-            // Here, we're going to randomly decide how many abilties to try to spam. In a random direction of course.
-            for (int i = 0; i < 5; i++) // 5 max.. Q, W, E, R, D
-            {
-
-            }
         }
 
         private char SelectHotkeyRandomly(char[] charArray, List<char> usedChars)
