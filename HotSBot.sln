@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotSBot", "HotSBot\HotSBot.csproj", "{B6AF89DA-928F-468F-AE5A-2EE406EFD47E}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HotsMSI", "HotsMSI\HotsMSI.vdproj", "{EFE4FFCF-6C62-498C-AB08-270CCD55281B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B6AF89DA-928F-468F-AE5A-2EE406EFD47E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6AF89DA-928F-468F-AE5A-2EE406EFD47E}.Release|x86.ActiveCfg = Release|x86
 		{B6AF89DA-928F-468F-AE5A-2EE406EFD47E}.Release|x86.Build.0 = Release|x86
+		{EFE4FFCF-6C62-498C-AB08-270CCD55281B}.Debug|Any CPU.ActiveCfg = Debug
+		{EFE4FFCF-6C62-498C-AB08-270CCD55281B}.Debug|x86.ActiveCfg = Debug
+		{EFE4FFCF-6C62-498C-AB08-270CCD55281B}.Release|Any CPU.ActiveCfg = Release
+		{EFE4FFCF-6C62-498C-AB08-270CCD55281B}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
