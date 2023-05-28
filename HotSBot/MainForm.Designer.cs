@@ -33,7 +33,6 @@
             this.topBorderPanel = new System.Windows.Forms.Panel();
             this.headerPanel = new System.Windows.Forms.Panel();
             this.lblBanner = new System.Windows.Forms.Label();
-            this.picBoxMurky = new System.Windows.Forms.PictureBox();
             this.pnlStart = new System.Windows.Forms.Panel();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
             this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
@@ -42,10 +41,13 @@
             this.minsTBox = new System.Windows.Forms.TextBox();
             this.lblHours = new System.Windows.Forms.Label();
             this.hoursTBox = new System.Windows.Forms.TextBox();
+            this.pboxHeroRender = new System.Windows.Forms.PictureBox();
+            this.pboxMapRender = new System.Windows.Forms.PictureBox();
             this.topBorderPanel.SuspendLayout();
             this.headerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxMurky)).BeginInit();
             this.pnlStart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxHeroRender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxMapRender)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -66,10 +68,9 @@
             this.topBorderPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.topBorderPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("topBorderPanel.BackgroundImage")));
             this.topBorderPanel.Controls.Add(this.headerPanel);
-            this.topBorderPanel.Controls.Add(this.picBoxMurky);
             this.topBorderPanel.Location = new System.Drawing.Point(0, 0);
             this.topBorderPanel.Name = "topBorderPanel";
-            this.topBorderPanel.Size = new System.Drawing.Size(596, 82);
+            this.topBorderPanel.Size = new System.Drawing.Size(1172, 82);
             this.topBorderPanel.TabIndex = 2;
             // 
             // headerPanel
@@ -78,7 +79,7 @@
             this.headerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.headerPanel.Controls.Add(this.lblBanner);
             this.headerPanel.ForeColor = System.Drawing.Color.Crimson;
-            this.headerPanel.Location = new System.Drawing.Point(162, 22);
+            this.headerPanel.Location = new System.Drawing.Point(449, 12);
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(241, 43);
             this.headerPanel.TabIndex = 7;
@@ -94,15 +95,6 @@
             this.lblBanner.TabIndex = 0;
             this.lblBanner.Text = "Welcome to ELO Hell :)";
             // 
-            // picBoxMurky
-            // 
-            this.picBoxMurky.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBoxMurky.BackgroundImage")));
-            this.picBoxMurky.Location = new System.Drawing.Point(-7, 0);
-            this.picBoxMurky.Name = "picBoxMurky";
-            this.picBoxMurky.Size = new System.Drawing.Size(600, 82);
-            this.picBoxMurky.TabIndex = 0;
-            this.picBoxMurky.TabStop = false;
-            // 
             // pnlStart
             // 
             this.pnlStart.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -116,7 +108,7 @@
             this.pnlStart.Controls.Add(this.hoursTBox);
             this.pnlStart.Controls.Add(this.button3);
             this.pnlStart.ForeColor = System.Drawing.Color.Crimson;
-            this.pnlStart.Location = new System.Drawing.Point(12, 88);
+            this.pnlStart.Location = new System.Drawing.Point(0, 182);
             this.pnlStart.Name = "pnlStart";
             this.pnlStart.Size = new System.Drawing.Size(550, 371);
             this.pnlStart.TabIndex = 3;
@@ -190,9 +182,27 @@
             this.hoursTBox.Size = new System.Drawing.Size(60, 27);
             this.hoursTBox.TabIndex = 1;
             // 
+            // pboxHeroRender
+            // 
+            this.pboxHeroRender.Location = new System.Drawing.Point(556, 182);
+            this.pboxHeroRender.Name = "pboxHeroRender";
+            this.pboxHeroRender.Size = new System.Drawing.Size(616, 371);
+            this.pboxHeroRender.TabIndex = 4;
+            this.pboxHeroRender.TabStop = false;
+            // 
+            // pboxMapRender
+            // 
+            this.pboxMapRender.Location = new System.Drawing.Point(556, 559);
+            this.pboxMapRender.Name = "pboxMapRender";
+            this.pboxMapRender.Size = new System.Drawing.Size(616, 371);
+            this.pboxMapRender.TabIndex = 5;
+            this.pboxMapRender.TabStop = false;
+            // 
             // hotsBot
             // 
-            this.ClientSize = new System.Drawing.Size(556, 349);
+            this.ClientSize = new System.Drawing.Size(1184, 943);
+            this.Controls.Add(this.pboxMapRender);
+            this.Controls.Add(this.pboxHeroRender);
             this.Controls.Add(this.pnlStart);
             this.Controls.Add(this.topBorderPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -202,9 +212,10 @@
             this.topBorderPanel.ResumeLayout(false);
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxMurky)).EndInit();
             this.pnlStart.ResumeLayout(false);
             this.pnlStart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxHeroRender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxMapRender)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,7 +234,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel topBorderPanel;
-        private System.Windows.Forms.PictureBox picBoxMurky;
         private System.Windows.Forms.Panel pnlStart;
         private System.Windows.Forms.Label lblHours;
         private System.Windows.Forms.TextBox hoursTBox;
@@ -234,6 +244,8 @@
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.Label lblBanner;
         private System.Windows.Forms.RichTextBox rtbConsole;
+        private System.Windows.Forms.PictureBox pboxHeroRender;
+        private System.Windows.Forms.PictureBox pboxMapRender;
     }
 }
 

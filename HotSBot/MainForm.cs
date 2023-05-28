@@ -33,34 +33,57 @@ namespace HotSBot
         {
             timeToStop = SetTimeToEndBot();
 
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            if (!Directory.Exists(path + "\\HotSBot\\Images\\hero\\"))
+            {
+                Directory.CreateDirectory(path + "\\HotSBot\\Images\\hero\\");
+            }
+            if (!Directory.Exists(path + "\\HotSBot\\Images\\map\\"))
+            {
+                Directory.CreateDirectory(path + "\\HotSBot\\Images\\map\\");
+            }
+
+            Screen primaryScreen = Screen.PrimaryScreen;
+            int screenWidth = primaryScreen.Bounds.Width;
+            int screenHeight = primaryScreen.Bounds.Height;
+
+            Rectangle heroRect = new Rectangle(0, (int)Math.Round(screenHeight * .8), (int)Math.Round(screenWidth * .11), (int)Math.Round(screenHeight*.2));
+            Bitmap heroBmp = new Bitmap(heroRect.Width, heroRect.Height, PixelFormat.Format32bppArgb);
+            Graphics heroG = Graphics.FromImage(heroBmp);
+            heroG.CopyFromScreen(heroRect.Left, heroRect.Top, 0, 0, heroBmp.Size, CopyPixelOperation.SourceCopy);
+            
+            heroBmp.Save(path + "\\HotSBot\\Images\\hero\\heroResource.jpg");
+
+            SetHero(heroBmp);
+            pboxHeroRender.Image = heroBmp;
+
+            Rectangle mapRect = new Rectangle((int)Math.Round(screenWidth * .75), (int)Math.Round(screenHeight * .667), (int)Math.Round(screenWidth * .25), (int)Math.Round(screenHeight * .33));
+            Bitmap mapBmp = new Bitmap(mapRect.Width, mapRect.Height, PixelFormat.Format32bppArgb);
+            Graphics mapG = Graphics.FromImage(mapBmp);
+            mapG.CopyFromScreen(mapRect.Left, mapRect.Top, 0, 0, mapBmp.Size, CopyPixelOperation.SourceCopy);
+
+            mapBmp.Save(path + "\\HotSBot\\Images\\map\\mapResource.jpg");
+
+            SetMap(mapBmp);
+            InGameDetection igd = new InGameDetection();
+            //igd.GetCurrentMap(bmp);
+            pboxMapRender.Image = mapBmp;
+
             Task startBotAsync = new Task(() =>
             {
-                Begin();
+                //Begin();
             }); startBotAsync.Start();
 
-            //Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width,
-            //                        Screen.PrimaryScreen.Bounds.Height);
+        }
+
+        private void SetMap(Bitmap bmp)
+        {
+
+        }
+
+        private void SetHero(Bitmap bmp)
+        {
             
-            //bitmap = new Bitmap(@"C:\Users\Tylor\Desktop\goodGreen.png");
-            //IronOcr.AutoOcr ocr = new IronOcr.AutoOcr();
-            //var x = ocr.Read(bitmap);
-            //string res = x.Text;
-
-            //bitmap.Save(@"C:\Users\Tylor\Desktop\testColor.png");
-
-            //if (Directory.Exists(@"C:\Temp:HotsBot\"))
-            //{
-            //    bitmap.Save(@"C:\Temp\HotSBot\mapCapture.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            //}
-            //else
-            //{
-            //    Directory.CreateDirectory(@"C:\Temp\HotSBot\");
-            //    bitmap.Save(@"C:\Temp\HotSBot\mapCapture.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            //}
-
-            //InGameDetection igd = new InGameDetection();
-            //igd.GetCurrentMap(bitmap);
-
         }
 
         private DateTime SetTimeToEndBot()

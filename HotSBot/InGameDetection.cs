@@ -23,73 +23,7 @@ namespace HotSBot
 
         public string GetCurrentMap(Bitmap bm)
         {
-            string mapResult = "";
-
-            Bitmap img = new Bitmap(@"C:\Temp\HotSBot\mapCapture.jpg");
-
-            string mapWereOn = "";
-            using (TesseractEngine eng = new TesseractEngine("./tessdata", "eng", EngineMode.Default))
-            {
-                using (Page page = eng.Process(img, PageSegMode.Auto))
-                {
-                    //mapWereOn = page.GetText().ToLower();
-                    var Ocr = new AutoOcr();
-                    var Result = Ocr.Read(@"C:\Temp\HotSBot\mapCapture.jpg");
-                    mapWereOn += Result.Text;
-                    img.Dispose();
-                }
-            }
-
-            if (mapWereOn.Contains("mura"))
-            {
-                mapResult = "Hanamura";
-                MessageBox.Show("Were on hanamura.");
-            }
-            else if (mapWereOn.Contains("tomb") | mapWereOn.Contains("spider"))
-            {
-                MessageBox.Show("We're on tomb.");
-            }
-            else if (mapWereOn.Contains("sky") | mapWereOn.Contains("temple"))
-            {
-
-            }
-            else if (mapWereOn.Contains("battlefield") | mapWereOn.Contains("eternity"))
-            {
-
-            }
-            else if (mapWereOn.Contains("alterac") | mapWereOn.Contains("pass"))
-            {
-
-            }
-            else if (mapWereOn.Contains("heart") | mapWereOn.Contains("bay"))
-            {
-
-            }
-            else if (mapWereOn.Contains("cursed") | mapWereOn.Contains("hollow"))
-            {
-
-            }
-            else if (mapWereOn.Contains("garden") | mapWereOn.Contains("terror"))
-            {
-
-            }
-            else if (mapWereOn.Contains("infernal") | mapWereOn.Contains("shrines"))
-            {
-
-            }
-            else if (mapWereOn.Contains("tower") | mapWereOn.Contains("doom"))
-            {
-
-            }
-            else if (mapWereOn.Contains("warhead") | mapWereOn.Contains("junction"))
-            {
-
-            }
-            else // Since all other searches failed, assume we're searching, then verify as such?
-            {
-            }
-
-            return mapResult;
+            return "";
         }
 
         internal void SelectTalent()
