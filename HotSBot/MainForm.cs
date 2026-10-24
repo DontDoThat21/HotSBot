@@ -129,8 +129,8 @@ namespace HotSBot
                     hotsLoc = hotsLoc.Replace("\"", "");
                     hotsLoc = hotsLoc.Substring(0, indexStop);
                     Process.Start(hotsLoc);
-                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
-                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc}, retard :) \n");
+                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc} \n");
+                    //rtbConsole.AppendText($"Openning up HotS found at {hotsLoc} \n");
                 }
             }
 
