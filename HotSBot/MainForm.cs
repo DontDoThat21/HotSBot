@@ -117,7 +117,7 @@ namespace HotSBot
                 string hotsLoc = "";
                 try
                 {
-                    hotsLoc = Registry.GetValue(@"HKEY_CLASSES_ROOT\Blizzard.StormReplay\DefaultIcon", "", "wtf?").ToString();
+                    hotsLoc = Registry.GetValue(@"HKEY_CLASSES_ROOT\Blizzard.StormReplay\DefaultIcon", "", "what the?").ToString();
                 }
                 catch (Exception)
                 {
